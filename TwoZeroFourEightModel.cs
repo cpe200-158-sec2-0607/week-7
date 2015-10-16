@@ -12,6 +12,9 @@ namespace twozerofoureight
         protected int[,] board;
         protected Random rand;
 
+        protected int score = 2;
+
+
         public TwoZeroFourEightModel() : this(4)
         {
             // default board size is 4 
@@ -22,14 +25,21 @@ namespace twozerofoureight
             return board;
         }
 
+        public int GetScore()
+        {
+            return score;
+        }
+
         public TwoZeroFourEightModel(int size)
         {
             boardSize = size;
             board = new int[boardSize, boardSize];
             var range = Enumerable.Range(0, boardSize);
-            foreach(int i in range) {
-                foreach(int j in range) {
-                    board[i,j] = 0;
+            foreach (int i in range)
+            {
+                foreach (int j in range)
+                {
+                    board[i, j] = 0;
                 }
             }
             rand = new Random();
@@ -101,6 +111,7 @@ namespace twozerofoureight
                     board[k, i] = 0;
                 }
             }
+            score += 2;
             board = Random(board);
             NotifyAll();
         }
@@ -153,6 +164,7 @@ namespace twozerofoureight
                     board[k, i] = 0;
                 }
             }
+            score += 2;
             board = Random(board);
             NotifyAll();
         }
@@ -207,6 +219,7 @@ namespace twozerofoureight
                     board[i, k] = 0;
                 }
             }
+            score += 2;
             board = Random(board);
             NotifyAll();
         }
@@ -257,6 +270,7 @@ namespace twozerofoureight
                     board[i, k] = 0;
                 }
             }
+            score += 2;
             board = Random(board);
             NotifyAll();
         }
